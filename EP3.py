@@ -34,11 +34,11 @@ def HBM(p,h,i,f):
     return HB
     
 lista = []
-p = open('usuário.csv', encoding='latin1')
+c = open('usuario.csv')
 b = open('alimentos.csv', encoding='latin1')
 al = b.readlines()
-
-
+us = c.readlines()
+print(us)
 for i in al:
     ali = i.strip().split(',')
     lista.append(ali)
@@ -48,5 +48,5 @@ l1 = [a[0] for a in lista]
 l2 = [a[1:] for a in lista]
 
 alimentos = dict(zip(l1,l2))
-print(alimentos)
+
 
