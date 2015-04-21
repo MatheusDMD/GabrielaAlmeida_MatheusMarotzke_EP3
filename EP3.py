@@ -5,6 +5,8 @@ Matheus Dias M.
 """
 from datetime import *
 
+arquivo = open('imc.txt', encoding = 'utf-8','w')
+
 def HBH(p,h,i,f):
     HB = 88.36+(13.4*p)+(4.8*h)-(5.7*i)
     if f == 'grau mínimo' or f == 'mínimo' or f == 'minimo':
