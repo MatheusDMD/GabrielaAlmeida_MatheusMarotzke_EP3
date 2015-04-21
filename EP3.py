@@ -41,6 +41,7 @@ lista = []
 lis = []
 r = []
 e = []
+dias = []
 data_comida_cal = {}
 tdcal = []
 
@@ -78,16 +79,18 @@ for i in range(1,len(r)):
     else:
         data_comida_cal[r[i][0]].append([r[i][1],r[i][2]])
 
-
-d4 = datetime.strptime('17/01/2015', '%d/%m/%Y')
-
-
 for i in data_comida_cal:
     total=0
     for j in data_comida_cal[i]:
         total+=(float(alimentos[j[0]][1])/float(alimentos[j[0]][0]))*float(j[1])
     data_comida_cal[i] = total
-print(data_comida_cal)
+
+for i in data_comida_cal.keys():
+    d1 = datetime.strptime(i, '%d/%m/%Y')
+    dias.append(d1)
+dias.sort()
+print(dias)
+
         #repond to dic
 
 print (IMC(nome,peso, altura))
