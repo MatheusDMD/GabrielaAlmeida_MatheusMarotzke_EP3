@@ -3,6 +3,8 @@
 Gabriela Almeida
 Matheus Dias M.
 """
+from datetime import *
+
 def HBH(p,h,i,f):
     HB = 88.36+(13.4*p)+(4.8*h)-(5.7*i)
     if f == 'grau mínimo' or f == 'mínimo' or f == 'minimo':
@@ -37,8 +39,6 @@ r = []
 e = []
 data_comida_cal = {}
 tdcal = []
-qtd = [0]
-
 
 b = open('alimentos.csv', encoding='latin1')
 al = b.readlines()
@@ -72,12 +72,17 @@ for i in range(1,len(r)):
         data_comida_cal[r[i][0]] = [[r[i][1],r[i][2]]]
     else:
         data_comida_cal[r[i][0]].append([r[i][1],r[i][2]])
-print(data_comida_cal)
+
+
+d4 = datetime.strptime('17/01/2015', '%d/%m/%Y')
+
 
 for i in data_comida_cal:
     total=0
     for j in data_comida_cal[i]:
         total+=(float(alimentos[j[0]][1])/float(alimentos[j[0]][0]))*float(j[1])
+    data_comida_cal[i] = total
+print(data_comida_cal)
         #repond to dic
 '''
 for i in data_comida_cal:
