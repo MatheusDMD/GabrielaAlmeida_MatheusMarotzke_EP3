@@ -5,7 +5,7 @@ Matheus Dias M.
 """
 from datetime import *
 
-arquivo = open('imc.txt', encoding = 'utf-8','w')
+arquivo = open('imc.txt','w+',encoding = 'utf-8')
 
 def HBH(p,h,i,f):
     HB = 88.36+(13.4*p)+(4.8*h)-(5.7*i)
@@ -36,27 +36,23 @@ def HBM(p,h,i,f):
     return HB
 
 def IMC(n, p, h):
-    """
-    Calcula o IMC do usuario
-    >>> IMC(n, 90, 1.50)
-    Seu IMC eh 40! Voce esta acima do peso
-    """
     IMC= p/(h**2) 
     
     if IMC<17:
-        print("Ola %n, seu IMC eh %5.2f! Voce esta muito abaixo de peso" % (nome, IMC))
+        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta muito abaixo de peso" % (nome, IMC))
     elif IMC<18.49:
-        print("Ola %n, seu IMC eh %5.2f! Voce esta Abaixo do peso" % (nome, IMC))
+        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta Abaixo do peso" % (nome, IMC))
     elif IMC<24.99:
-        print("Ola %n, seu IMC eh %5.2f! Voce esta com Peso normal" % (nome, IMC))
+        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta com Peso normal" % (nome, IMC))
     elif IMC<29.99:
-        print("Ola %n, seu IMC eh %5.2f! Voce esta Acima do Peso" % (nome, IMC))
+        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta Acima do Peso" % (nome, IMC))
     elif IMC<34.99:
-        print("Ola %n, seu IMC eh %5.2f! Voce esta com Obesidade tipo I" % (nome, IMC))
+        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta com Obesidade tipo I" % (nome, IMC))
     elif IMC<39.99:
-        print("Ola %n, seu IMC eh %5.2f! Voce esta com Obesidade tipo II" % (nome, IMC))
+        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta com Obesidade tipo II" % (nome, IMC))
     elif IMC>40:
-        print("Ola %n, seu IMC eh %5.2f! Voce esta com Obesidade tipo III" % (nome, IMC))
+        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta com Obesidade tipo III" % (nome, IMC))
+    arquivo.close()
     
     
 lista = []
@@ -112,25 +108,3 @@ for i in data_comida_cal.keys():
     dias.append(d1)
 dias.sort()
 print(dias)
-
-        #repond to dic
-
-print (IMC(nome,peso, altura))
-
-"""
-for i in data_comida_cal:
-    qtd.append(len(data_comida_cal[i]))
-    for j in data_comida_cal[i]:
-        tdcal.append((float(alimentos[j[0]][1])/float(alimentos[j[0]][0]))*float(j[1]))
-k = []
-soma=0
-print(qtd)
-print(tdcal)
-print(data_comida_cal)
-for i in range(len(qtd)-1):
-    for j in range(qtd[i],qtd[i]+qtd[i+1]):
-        soma=soma+tdcal[j]
-    k.append(soma)
-    soma=0
-print(k)
-"""
