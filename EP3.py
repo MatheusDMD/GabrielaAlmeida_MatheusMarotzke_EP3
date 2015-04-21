@@ -33,9 +33,18 @@ def HBM(p,h,i,f):
         HB*=1.9
     return HB
 
-def IMC(n,p, h):
-    IMC= p/(h**2)
-    return("Ola %s! Seu IMC eh %5.2f" % (n, IMC))
+def IMC(n, p, h):
+    """
+    Calcula o IMC do usuario
+    >>> IMC(n, 90, 1.50)
+    Seu IMC eh 40! Voce esta acima do peso
+    """
+    IMC= p/(h**2) 
+    
+    if IMC<17:
+        print("Ola %n, seu IMC eh %5.2f! Voce esta muito abaixo de peso"(nome, IMC))
+
+    
     
 lista = []
 lis = []
