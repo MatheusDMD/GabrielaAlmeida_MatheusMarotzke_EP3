@@ -44,8 +44,19 @@ def IMC(n, p, h):
     IMC= p/(h**2) 
     
     if IMC<17:
-        print("Ola %n, seu IMC eh %5.2f! Voce esta muito abaixo de peso"(nome, IMC))
-
+        print("Ola %n, seu IMC eh %5.2f! Voce esta muito abaixo de peso" % (nome, IMC))
+    elif IMC<18.49:
+        print("Ola %n, seu IMC eh %5.2f! Voce esta Abaixo do peso" % (nome, IMC))
+    elif IMC<24.99:
+        print("Ola %n, seu IMC eh %5.2f! Voce esta com Peso normal" % (nome, IMC))
+    elif IMC<29.99:
+        print("Ola %n, seu IMC eh %5.2f! Voce esta Acima do Peso" % (nome, IMC))
+    elif IMC<34.99:
+        print("Ola %n, seu IMC eh %5.2f! Voce esta com Obesidade tipo I" % (nome, IMC))
+    elif IMC<39.99:
+        print("Ola %n, seu IMC eh %5.2f! Voce esta com Obesidade tipo II" % (nome, IMC))
+    elif IMC>40:
+        print("Ola %n, seu IMC eh %5.2f! Voce esta com Obesidade tipo III" % (nome, IMC))
     
     
 lista = []
@@ -106,8 +117,7 @@ print(dias)
 
 print (IMC(nome,peso, altura))
 
-
-'''
+"""
 for i in data_comida_cal:
     qtd.append(len(data_comida_cal[i]))
     for j in data_comida_cal[i]:
@@ -123,4 +133,4 @@ for i in range(len(qtd)-1):
     k.append(soma)
     soma=0
 print(k)
-'''
+"""
