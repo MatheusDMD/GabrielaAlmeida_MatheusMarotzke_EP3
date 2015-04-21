@@ -32,6 +32,10 @@ def HBM(p,h,i,f):
     if f == 'muito alto':
         HB*=1.9
     return HB
+
+def IMC(n,p, h):
+    IMC= p/(h**2)
+    return("Ola %s! Seu IMC eh %5.2f" % (n, IMC))
     
 lista = []
 lis = []
@@ -65,6 +69,7 @@ sexo = r[0][3]
 altura = float(r[0][4])
 fator = r[0][5]
 
+
 x = HBM(peso,altura,idade,fator)
 
 for i in range(1,len(r)):
@@ -84,6 +89,10 @@ for i in data_comida_cal:
     data_comida_cal[i] = total
 print(data_comida_cal)
         #repond to dic
+
+print (IMC(nome,peso, altura))
+
+
 '''
 for i in data_comida_cal:
     qtd.append(len(data_comida_cal[i]))
