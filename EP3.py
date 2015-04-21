@@ -108,3 +108,5 @@ for i in data_comida_cal.keys():
     dias.append(d1)
 dias.sort()
 print(dias)
+
+print (IMC(nome,peso, altura))
