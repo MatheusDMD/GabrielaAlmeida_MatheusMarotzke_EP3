@@ -149,7 +149,7 @@ plt.plot(dias_n, lista_kcal_esperado, 'r', label='Calorias ideias')
 plt.xlabel('dias da semana')
 plt.ylabel('calorias[kcal]')
 plt.title('Calorias da semana') 
-plt.legend(loc="left") 
+plt.legend(loc="center right") 
 plt.show()
 
 plt.plot(dias_n, carb_ordem, 'r-')
