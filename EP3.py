@@ -16,7 +16,7 @@ def HBH(p,h,i,f):
         HB*=1.2
     if f == 'baixo':
         HB*=1.375
-    if f == 'média' or f == 'media':
+    if f == 'médio' or f == 'medio':
         HB*=1.55
     if f == 'alto':
         HB*=1.725
@@ -24,7 +24,7 @@ def HBH(p,h,i,f):
         HB*=1.9
     '''
     Calcula a "Energia de Repouso" de um homem
-    >>> HBM(72,1.78,25,'média')
+    >>> HBM(72,1.78,25,'médio')
     2735
     '''
     return HB
@@ -35,7 +35,7 @@ def HBM(p,h,i,f):
         HB*=1.2
     if f == 'baixo':
         HB*=1.375
-    if f == 'média' or f == 'media':
+    if f == 'médio' or f == 'medio':
         HB*=1.55
     if f == 'alto':
         HB*=1.725
@@ -165,6 +165,15 @@ plt.plot(dias_n, prot_ordem, 'g-')
 plt.xlabel('dias da semana')
 plt.ylabel('proteinas [g]')
 plt.title('Proteinas da semana')  
+plt.show()
+
+plt.plot(dias_n, carb_ordem, dias_n, gord_ordem, dias_n, prot_ordem)
+plt.ylabel('gramas [g]')
+plt.plot(dias_n, carb_ordem, 'b', label='carboidrato')
+plt.plot(dias_n, gord_ordem, 'y', label='gordura')
+plt.plot(dias_n, prot_ordem, 'r', label='proteina')
+plt.title('Carboidratos, gorduras e proteinas')
+plt.legend(loc="upper left")
 plt.show()
 
 IMC(nome,peso, altura)
