@@ -8,7 +8,12 @@ from datetime import *
 arquivo = open('imc.txt','w+',encoding = 'utf-8')
 
 def HBH(p,h,i,f):
-    HB = 88.36+(13.4*p)+(4.8*h)-(5.7*i)
+    '''
+    Calcula a "Energia de Repouso" de um homem
+    >>>HBM(72,1.78,25,'H','média')
+    2735
+    '''
+    HB = 88.36+(13.4*p)+(4.8*(h*100))-(5.7*i)
     if f == 'grau mínimo' or f == 'mínimo' or f == 'minimo':
         HB*=1.2
     if f == 'baixo':
@@ -22,7 +27,12 @@ def HBH(p,h,i,f):
     return HB
     
 def HBM(p,h,i,f):
-    HB = 447.6+(9.2*p)+(3.1*h)-(4.3*i)
+    '''
+    Calcula a "Energia de Repouso" de um homem
+    >>>HBM(50,1.72,25,'M','alto')
+    2299
+    '''
+    HB = 447.6+(9.2*p)+(3.1*(h*100))-(4.3*i)
     if f == 'grau mínimo' or f == 'mínimo' or f == 'minimo':
         HB*=1.2
     if f == 'baixo':
