@@ -137,6 +137,11 @@ elif sexo == 'H':
 dias_n = list(range(len(dias)))
 lista_kcal_esperado = [kcal_esperado]*len(dias_n)
 
+imgem = imread('diet.png')
+imgplot = plt.imshow(img)
+plt.axis('off')
+plt.show()
+
 plt.plot(dias_n, cal_ordem, 'b-')
 plt.plot(dias_n, lista_kcal_esperado, 'r-')
 plt.xlabel('dias da semana')
