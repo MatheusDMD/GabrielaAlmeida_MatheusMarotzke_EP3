@@ -92,10 +92,16 @@ for i in range(1,len(r)):
         data_comida_cal[r[i][0]].append([r[i][1],r[i][2]])
 
 for i in data_comida_cal:
-    total=0
+    total_cal=0
+    total_prot=0
+    total_carb=0
+    total_gord=0
     for j in data_comida_cal[i]:
-        total+=(float(alimentos[j[0]][1])/float(alimentos[j[0]][0]))*float(j[1])
-    data_comida_cal[i] = total
+        total_cal+=(float(alimentos[j[0]][1])/float(alimentos[j[0]][0]))*float(j[1])
+        total_prot+=(float(alimentos[j[0]][2])/float(alimentos[j[0]][0]))*float(j[1])
+        total_carb+=(float(alimentos[j[0]][3])/float(alimentos[j[0]][0]))*float(j[1])
+        total_gord+=(float(alimentos[j[0]][4])/float(alimentos[j[0]][0]))*float(j[1])
+    data_comida_cal[i] = [total_cal,total_prot,total_carb,total_gord]
 
 for i in data_comida_cal.keys():
     d1 = datetime.strptime(i, '%d/%m/%Y').strftime("%d/%m/%Y")
@@ -103,8 +109,14 @@ for i in data_comida_cal.keys():
 dias.sort()
 
 cal_ordem = []
+prot_ordem = []
+carb_ordem = []
+gord_ordem = []
 for i in dias:
-    cal_ordem.append(data_comida_cal[i])
+    cal_ordem.append(data_comida_cal[i][0])
+    prot_ordem.append(data_comida_cal[i][1])
+    carb_ordem.append(data_comida_cal[i][2])
+    gord_ordem.append(data_comida_cal[i][3])
 
 
 IMC(nome,peso, altura)
