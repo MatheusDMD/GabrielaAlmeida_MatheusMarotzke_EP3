@@ -4,15 +4,13 @@ Gabriela Almeida
 Matheus Dias M.
 """
 from datetime import *
+import doctest
+import matplotlib.pyplot as plt
+from pylab import *
 
 arquivo = open('imc.txt','w+',encoding = 'utf-8')
 
 def HBH(p,h,i,f):
-    '''
-    Calcula a "Energia de Repouso" de um homem
-    >>>HBM(72,1.78,25,'H','média')
-    2735
-    '''
     HB = 88.36+(13.4*p)+(4.8*(h*100))-(5.7*i)
     if f == 'grau mínimo' or f == 'mínimo' or f == 'minimo':
         HB*=1.2
@@ -24,14 +22,14 @@ def HBH(p,h,i,f):
         HB*=1.725
     if f == 'muito alto':
         HB*=1.9
+    '''
+    Calcula a "Energia de Repouso" de um homem
+    >>> HBM(72,1.78,25,'média')
+    2735
+    '''
     return HB
     
 def HBM(p,h,i,f):
-    '''
-    Calcula a "Energia de Repouso" de um homem
-    >>>HBM(50,1.72,25,'M','alto')
-    2299
-    '''
     HB = 447.6+(9.2*p)+(3.1*(h*100))-(4.3*i)
     if f == 'grau mínimo' or f == 'mínimo' or f == 'minimo':
         HB*=1.2
@@ -43,7 +41,13 @@ def HBM(p,h,i,f):
         HB*=1.725
     if f == 'muito alto':
         HB*=1.9
+    '''
+    Calcula a "Energia de Repouso" de um homem
+    >>> HBM(50,1.72,25,'alto')
+    2299
+    '''
     return HB
+
 
 def IMC(n, p, h):
     IMC= (1.3*p)/(h**2.5)
@@ -92,9 +96,6 @@ sexo = r[0][3]
 altura = float(r[0][4])
 fator = r[0][5]
 
-
-x = HBM(peso,altura,idade,fator)
-
 for i in range(1,len(r)):
     if r[i][0] not in data_comida_cal:
         data_comida_cal[r[i][0]] = [[r[i][1],r[i][2]]]
@@ -114,7 +115,7 @@ for i in data_comida_cal:
     data_comida_cal[i] = [total_cal,total_prot,total_carb,total_gord]
 
 for i in data_comida_cal.keys():
-    d1 = datetime.strptime(i, '%d/%m/%Y').strftime("%d/%m/%Y")
+    d1 = datetime.datetime.strptime(i, '%d/%m/%Y').strftime("%d/%m/%Y")
     dias.append(d1)
 dias.sort()
 
@@ -128,5 +129,38 @@ for i in dias:
     carb_ordem.append(data_comida_cal[i][2])
     gord_ordem.append(data_comida_cal[i][3])
 
+if sexo == 'M':
+    kcal_esperado = HBM(peso,altura,idade,fator)
+elif sexo == 'H':
+    kcal_esperado = HBH(peso,altura,idade,fator)
+
+dias_n = list(range(len(dias)))
+lista_kcal_esperado = [kcal_esperado]*len(dias_n)
+
+plt.plot(dias_n, cal_ordem, 'b-')
+plt.plot(dias_n, lista_kcal_esperado, 'r-')
+plt.xlabel('dias da semana')
+plt.ylabel('calorias[kcal]')
+plt.title('Calorias da semana')   
+plt.show()
+
+plt.plot(dias_n, carb_ordem, 'r-')
+plt.xlabel('dias da semana')
+plt.ylabel('carboidratos [g]')
+plt.title('carboidratos da semana')  
+plt.show()
+
+plt.plot(dias_n, gord_ordem, 'y-')
+plt.xlabel('dias da semana')
+plt.ylabel('gorduras [g]')
+plt.title('gorduras da semana')  
+plt.show()
+
+plt.plot(dias_n, prot_ordem, 'g-')
+plt.xlabel('dias da semana')
+plt.ylabel('proteinas [g]')
+plt.title('proteinas da semana')  
+plt.show()
 
 IMC(nome,peso, altura)
+
