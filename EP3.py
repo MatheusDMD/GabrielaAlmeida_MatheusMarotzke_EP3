@@ -36,16 +36,22 @@ def HBM(p,h,i,f):
     return HB
 
 def IMC(n, p, h):
-    IMC= (1.3*p)/(h**2.5)
+    IMC= p/(h**2) 
     
-    if IMC<18.5:
+    if IMC<17:
+        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta muito abaixo de peso" % (nome, IMC))
+    elif IMC<18.49:
         arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta Abaixo do peso" % (nome, IMC))
     elif IMC<24.99:
         arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta com Peso normal" % (nome, IMC))
     elif IMC<29.99:
         arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta Acima do Peso" % (nome, IMC))
-    elif IMC>30:
-        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta Obeso" % (nome, IMC))
+    elif IMC<34.99:
+        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta com Obesidade tipo I" % (nome, IMC))
+    elif IMC<39.99:
+        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta com Obesidade tipo II" % (nome, IMC))
+    elif IMC>40:
+        arquivo.write("Ola %s, seu IMC é %5.2f! Voce esta com Obesidade tipo III" % (nome, IMC))
     arquivo.close()
     
     
@@ -105,6 +111,5 @@ dias.sort()
 cal_ordem = []
 for i in dias:
     cal_ordem.append(data_comida_cal[i])
-
 
 IMC(nome,peso, altura)
