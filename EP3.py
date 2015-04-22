@@ -104,9 +104,12 @@ for i in data_comida_cal:
     data_comida_cal[i] = total
 
 for i in data_comida_cal.keys():
-    d1 = datetime.strptime(i, '%d/%m/%Y')
+    d1 = datetime.strptime(i, '%d/%m/%Y').strftime("%d/%m/%Y")
     dias.append(d1)
 dias.sort()
-print(dias)
 
-print (IMC(nome,peso, altura))
+cal_ordem = []
+for i in dias:
+    cal_ordem.append(data_comida_cal[i])
+
+IMC(nome,peso, altura)
